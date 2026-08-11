@@ -60,9 +60,9 @@ export function GitHubView() {
 
   if (!githubConfig.owner || !githubConfig.repo) {
     return (
-      <div className="h-[calc(100vh-6rem)] flex flex-col items-center justify-center text-slate-500">
+      <div className="h-[calc(100vh-6rem)] flex flex-col items-center justify-center text-gray-600">
         <Github className="w-16 h-16 text-slate-300 mb-4" />
-        <h2 className="text-xl font-medium text-slate-700">GitHub Não Configurado</h2>
+        <h2 className="text-xl font-medium text-gray-700">GitHub Não Configurado</h2>
         <p className="mt-2 text-center max-w-md">Vá até as Configurações e adicione o Owner e o nome do Repositório para visualizar os commits e issues.</p>
       </div>
     );
@@ -71,12 +71,12 @@ export function GitHubView() {
   return (
     <div className="space-y-6 max-w-7xl mx-auto h-[calc(100vh-6rem)] flex flex-col">
       <div className="flex items-center gap-3 shrink-0">
-        <div className="p-3 bg-slate-900 text-white rounded-xl">
+        <div className="p-3 bg-black text-white rounded-xl">
           <Github className="w-6 h-6" />
         </div>
         <div>
-          <h2 className="text-2xl font-bold text-slate-900">{githubConfig.owner} / {githubConfig.repo}</h2>
-          <p className="text-slate-500">Últimas atualizações do repositório.</p>
+          <h2 className="text-xl font-bold text-gray-900 uppercase tracking-tight">{githubConfig.owner} / {githubConfig.repo}</h2>
+          <p className="text-gray-600">Últimas atualizações do repositório.</p>
         </div>
       </div>
 
@@ -87,7 +87,7 @@ export function GitHubView() {
       )}
 
       {error && !loading && (
-        <div className="bg-red-50 text-red-600 p-4 rounded-lg flex items-start gap-3 border border-red-100 shrink-0">
+        <div className="bg-red-50 text-red-600 p-4  flex items-start gap-3 border border-red-100 shrink-0">
           <AlertCircle className="w-5 h-5 shrink-0 mt-0.5" />
           <p>{error}</p>
         </div>
@@ -95,10 +95,10 @@ export function GitHubView() {
 
       {!loading && !error && (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 flex-1 min-h-0">
-          <div className="bg-white rounded-xl border border-slate-200 shadow-sm flex flex-col h-full overflow-hidden">
-            <div className="p-4 border-b border-slate-200 bg-slate-50 shrink-0 flex items-center gap-2">
+          <div className="bg-white rounded-xl border border-gray-300 shadow-sm flex flex-col h-full overflow-hidden">
+            <div className="p-4 border-b border-gray-300 bg-gray-50 shrink-0 flex items-center gap-2">
               <CircleDot className="w-5 h-5 text-emerald-500" />
-              <h3 className="font-semibold text-slate-900">Issues Recentes</h3>
+              <h3 className="font-semibold text-gray-900">Issues Recentes</h3>
             </div>
             <div className="overflow-y-auto flex-1 p-4 space-y-4">
               {issues.map(issue => (
@@ -107,10 +107,10 @@ export function GitHubView() {
                   href={issue.html_url} 
                   target="_blank" 
                   rel="noreferrer"
-                  className="block p-4 rounded-lg border border-slate-100 hover:border-slate-300 hover:shadow-sm transition-all"
+                  className="block p-4  border border-gray-200 hover:border-slate-300 hover:shadow-sm transition-all"
                 >
-                  <h4 className="font-medium text-slate-900 mb-1">{issue.title}</h4>
-                  <div className="flex items-center gap-3 text-xs text-slate-500">
+                  <h4 className="font-medium text-gray-900 mb-1">{issue.title}</h4>
+                  <div className="flex items-center gap-3 text-xs text-gray-600">
                     <span className="flex items-center gap-1">
                       <CircleDot className="w-3 h-3 text-emerald-500" />
                       {issue.state}
@@ -120,14 +120,14 @@ export function GitHubView() {
                   </div>
                 </a>
               ))}
-              {issues.length === 0 && <p className="text-slate-500 text-center py-4">Nenhuma issue encontrada.</p>}
+              {issues.length === 0 && <p className="text-gray-600 text-center py-4">Nenhuma issue encontrada.</p>}
             </div>
           </div>
 
-          <div className="bg-white rounded-xl border border-slate-200 shadow-sm flex flex-col h-full overflow-hidden">
-            <div className="p-4 border-b border-slate-200 bg-slate-50 shrink-0 flex items-center gap-2">
-              <GitCommit className="w-5 h-5 text-slate-600" />
-              <h3 className="font-semibold text-slate-900">Commits Recentes</h3>
+          <div className="bg-white rounded-xl border border-gray-300 shadow-sm flex flex-col h-full overflow-hidden">
+            <div className="p-4 border-b border-gray-300 bg-gray-50 shrink-0 flex items-center gap-2">
+              <GitCommit className="w-5 h-5 text-gray-600" />
+              <h3 className="font-semibold text-gray-900">Commits Recentes</h3>
             </div>
             <div className="overflow-y-auto flex-1 p-4 space-y-4">
               {commits.map(commit => (
@@ -136,11 +136,11 @@ export function GitHubView() {
                   href={commit.html_url} 
                   target="_blank" 
                   rel="noreferrer"
-                  className="block p-4 rounded-lg border border-slate-100 hover:border-slate-300 hover:shadow-sm transition-all group"
+                  className="block p-4  border border-gray-200 hover:border-slate-300 hover:shadow-sm transition-all group"
                 >
-                  <p className="font-medium text-slate-900 mb-2 line-clamp-2">{commit.commit.message}</p>
-                  <div className="flex items-center gap-3 text-xs text-slate-500">
-                    <span className="font-mono bg-slate-100 px-1.5 py-0.5 rounded text-slate-600 group-hover:bg-blue-50 group-hover:text-blue-600 transition-colors">
+                  <p className="font-medium text-gray-900 mb-2 line-clamp-2">{commit.commit.message}</p>
+                  <div className="flex items-center gap-3 text-xs text-gray-600">
+                    <span className="font-mono bg-gray-100 px-1.5 py-0.5 rounded text-gray-600 group-hover:bg-blue-50 group-hover:text-blue-600 transition-colors">
                       {commit.sha.substring(0, 7)}
                     </span>
                     <span>por {commit.commit.author.name}</span>
@@ -148,7 +148,7 @@ export function GitHubView() {
                   </div>
                 </a>
               ))}
-              {commits.length === 0 && <p className="text-slate-500 text-center py-4">Nenhum commit encontrado.</p>}
+              {commits.length === 0 && <p className="text-gray-600 text-center py-4">Nenhum commit encontrado.</p>}
             </div>
           </div>
         </div>

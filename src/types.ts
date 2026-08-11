@@ -1,4 +1,4 @@
-export type ViewState = 'dashboard' | 'crm' | 'kanban' | 'finance' | 'github' | 'settings';
+export type ViewState = 'dashboard' | 'crm' | 'kanban' | 'finance' | 'github' | 'settings' | 'calendar';
 
 export interface Client {
   id: string;

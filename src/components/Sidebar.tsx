@@ -5,6 +5,7 @@ import {
   KanbanSquare, 
   CircleDollarSign, 
   Github, 
+  Calendar as CalendarIcon,
   Settings as SettingsIcon,
   Bell
 } from 'lucide-react';
@@ -23,6 +24,7 @@ const navItems: { id: ViewState; label: string; icon: React.FC<any> }[] = [
   { id: 'crm', label: 'Clientes (CRM)', icon: Users },
   { id: 'kanban', label: 'Projetos', icon: KanbanSquare },
   { id: 'finance', label: 'Finanças', icon: CircleDollarSign },
+  { id: 'calendar', label: 'Agenda & Meet', icon: CalendarIcon },
   { id: 'github', label: 'GitHub', icon: Github },
 ];
 
@@ -31,43 +33,43 @@ export function Sidebar({ currentView, onNavigate, onToggleNotifications }: Side
   const unreadCount = notifications.filter(n => !n.read).length;
 
   return (
-    <aside className="w-64 bg-slate-900 text-slate-300 flex flex-col h-screen shrink-0 print:hidden">
-      <div className="p-6">
-        <h1 className="text-2xl font-bold text-white tracking-tight flex items-center gap-2">
-          <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center text-white">N</div>
-          Nexus Hub
+    <aside className="w-64 bg-gray-50 border-r border-gray-300 text-gray-900 flex flex-col h-screen shrink-0 print:hidden">
+      <div className="p-6 border-b border-gray-200">
+        <h1 className="text-xl font-black uppercase tracking-tight flex items-center gap-2">
+          <div className="w-6 h-6 bg-black flex items-center justify-center text-white text-sm">N</div>
+          NEXUS
         </h1>
       </div>
       
-      <nav className="flex-1 px-4 space-y-1">
+      <nav className="flex-1 py-4 px-3 space-y-1">
         {navItems.map((item) => (
           <button
             key={item.id}
             onClick={() => onNavigate(item.id)}
             className={cn(
-              "w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors",
+              "w-full flex items-center gap-3 px-3 py-2 text-sm font-semibold uppercase tracking-wider transition-colors border-l-2",
               currentView === item.id 
-                ? "bg-blue-600/10 text-blue-400" 
-                : "hover:bg-slate-800 hover:text-white"
+                ? "border-black bg-gray-200/50 text-black" 
+                : "border-transparent text-gray-600 hover:bg-gray-100 hover:text-black"
             )}
           >
-            <item.icon className="w-5 h-5" />
+            <item.icon className="w-4 h-4 shrink-0" />
             {item.label}
           </button>
         ))}
       </nav>
 
-      <div className="p-4 border-t border-slate-800 space-y-2">
+      <div className="p-4 border-t border-gray-200 space-y-1">
         <button
           onClick={onToggleNotifications}
-          className="w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-sm font-medium hover:bg-slate-800 hover:text-white transition-colors"
+          className="w-full flex items-center justify-between px-3 py-2 text-sm font-semibold uppercase tracking-wider text-gray-600 hover:bg-gray-100 hover:text-black transition-colors"
         >
           <div className="flex items-center gap-3">
-            <Bell className="w-5 h-5" />
+            <Bell className="w-4 h-4 shrink-0" />
             Notificações
           </div>
           {unreadCount > 0 && (
-            <span className="bg-blue-600 text-white text-xs font-bold px-2 py-0.5 rounded-full">
+            <span className="bg-black text-white text-[10px] px-1.5 py-0.5 rounded-sm">
               {unreadCount}
             </span>
           )}
@@ -75,13 +77,13 @@ export function Sidebar({ currentView, onNavigate, onToggleNotifications }: Side
         <button
           onClick={() => onNavigate('settings')}
           className={cn(
-            "w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors",
+            "w-full flex items-center gap-3 px-3 py-2 text-sm font-semibold uppercase tracking-wider transition-colors border-l-2",
             currentView === 'settings' 
-              ? "bg-blue-600/10 text-blue-400" 
-              : "hover:bg-slate-800 hover:text-white"
+              ? "border-black bg-gray-200/50 text-black" 
+              : "border-transparent text-gray-600 hover:bg-gray-100 hover:text-black"
           )}
         >
-          <SettingsIcon className="w-5 h-5" />
+          <SettingsIcon className="w-4 h-4 shrink-0" />
           Configurações
         </button>
       </div>
