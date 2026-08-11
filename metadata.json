@@ -1,0 +1,6 @@
+{
+  "name": "Nexus Hub",
+  "description": "Central de ferramentas para gerenciamento pessoal com CRM, Kanban, Finanças e integrações.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
