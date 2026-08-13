@@ -1,4 +1,5 @@
-import React from 'react';
+// Avoid importing React types to keep this file working when @types/react is not installed.
+// Use a loose 'any' type for icon components.
 import { 
   LayoutDashboard, 
   Users, 
@@ -19,7 +20,7 @@ interface SidebarProps {
   onToggleNotifications: () => void;
 }
 
-const navItems: { id: ViewState; label: string; icon: React.FC<any> }[] = [
+const navItems: { id: ViewState; label: string; icon: any }[] = [
   { id: 'dashboard', label: 'Dashboard', icon: LayoutDashboard },
   { id: 'crm', label: 'Clientes (CRM)', icon: Users },
   { id: 'kanban', label: 'Projetos', icon: KanbanSquare },
@@ -36,8 +37,8 @@ export function Sidebar({ currentView, onNavigate, onToggleNotifications }: Side
     <aside className="w-64 bg-gray-50 border-r border-gray-300 text-gray-900 flex flex-col h-screen shrink-0 print:hidden">
       <div className="p-6 border-b border-gray-200">
         <h1 className="text-xl font-black uppercase tracking-tight flex items-center gap-2">
-          <div className="w-6 h-6 bg-black flex items-center justify-center text-white text-sm">N</div>
-          NEXUS
+          <div className="w-6 h-6 bg-black flex items-center justify-center text-white text-sm">MT</div>
+          My Tools
         </h1>
       </div>
       

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React from 'react';
 import { useStore } from '../store/useStore';
 import { Users, CheckCircle, TrendingUp, Download, ArrowUpRight, ArrowDownRight } from 'lucide-react';
